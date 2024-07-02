@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from(100);
             $table->timestamps();
 
-            $table->unsignedInteger('post_id');
-            $table->unsignedInteger('user_id');
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
 
             $table->text('comment');
         });
