@@ -25,3 +25,9 @@
         {{ $msg }}
     </div>
 @endif
+
+@if($msg = old('status'))
+    <div class="alert alert-success text-center">
+        {{ $msg }}
+    </div>
+@endif

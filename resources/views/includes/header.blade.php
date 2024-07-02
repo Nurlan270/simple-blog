@@ -25,10 +25,10 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item {{ mark_route('account*') }}" href="{{ route('account.panel') }}">
-                                <i class="bi bi-person-lines-fill pe-2"></i>
+                                <i class="bi bi-person-fill-gear pe-2"></i>
                                 {{ __('Account Panel') }}
                             </a>
-                            <a class="dropdown-item {{ mark_route('posts*') }}" href="{{ route('user.posts.index') }}">
+                            <a class="dropdown-item {{ mark_route('user.posts*') }}" href="{{ route('user.posts.index') }}">
                                 <i class="bi bi-file-post pe-2"></i>
                                 {{ __('My posts') }}
                             </a>

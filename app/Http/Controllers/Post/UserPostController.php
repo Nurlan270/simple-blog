@@ -11,13 +11,14 @@ use Egulias\EmailValidator\Warning\ObsoleteDTEXT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use function Sodium\increment;
 
 class UserPostController extends Controller
 {
     public function index()
     {
         $posts = Post::query()
-            ->where('author', Auth::user()->name)
+            ->where('author_id', Auth::user()->id)
             ->latest()
             ->paginate(15);
 
@@ -43,7 +44,7 @@ class UserPostController extends Controller
 
         Post::query()
             ->create([
-                'author'  => Auth::user()->name,
+                'author_id'  => Auth::user()->id,
                 'title'   => $validated['title'],
                 'content' => $validated['content'],
                 'image'   => $image_name ?? null
@@ -52,16 +53,6 @@ class UserPostController extends Controller
         $request->session()->flash('post', 'Post uploaded successfully !');
 
         return redirect()->route('user.posts.index');
-    }
-
-    public function show(string $id)
-    {
-        $post = Post::query()->findOrFail($id);
-
-        $date = $post->created_at->format('F j, Y');
-        $time = $post->created_at->format('H:i');
-
-        return view('posts.user.show', compact(['post', 'date', 'time']));
     }
 
     public function edit(string $id)
@@ -91,7 +82,7 @@ class UserPostController extends Controller
         Post::query()
             ->where('id', $id)
             ->update([
-                'author'  => Auth::user()->name,
+                'author_id'  => Auth::user()->id,
                 'title'   => $validated['title'],
                 'content' => $validated['content'],
                 'image'   => $imgResult ?? $post->image,

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Post\UserPostController;
 use Illuminate\Support\Facades\Route;
@@ -45,9 +46,15 @@ Route::controller(AccountController::class)
 
 //      Posts
 Route::resource('posts', PostController::class)
-    ->only(['index', 'show']);
+    ->only(['index', 'show'])
+    ->middleware('increment.post.view');
 
-//      User posts
+//      Post's comments
+Route::resource('posts.comment', CommentController::class)
+    ->only(['store', 'destroy']);
+
+//      User's posts
 Route::resource('user/posts', UserPostController::class)
     ->names('user.posts')
+    ->except('show')
     ->middleware('auth');

@@ -2,6 +2,18 @@
 
 @section('page.title', 'Edit post')
 
+@pushonce('css')
+    <style>
+        .trix-button--icon-heading-1,
+        .trix-button--icon-attach,
+        .trix-button-group--file-tools,
+        .trix-button-group-spacer,
+        .trix-button--icon-decrease-nesting-level,
+        .trix-button--icon-increase-nesting-level
+        {display: none;}
+    </style>
+@endpushonce
+
 @pushonce('trix')
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -29,10 +30,17 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $author = User::query()->find($post->author_id)->name;
+
+        $comments = $post
+            ->comments()
+            ->latest()
+            ->get();
+
         $date = $post->created_at->format('F j, Y');
         $time = $post->created_at->format('H:i');
 
-        return view('posts.show', compact(['post', 'date', 'time']));
+        return view('posts.show', compact(['post', 'date', 'time', 'author', 'comments']));
     }
 
 }

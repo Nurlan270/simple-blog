@@ -27,7 +27,7 @@
                         <div class="card shadow-sm rounded">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <a href="{{ route('user.posts.show', $post->id) }}">
+                                    <a href="{{ route('posts.show', $post->id) }}">
                                         @if($post->image)
                                             <img src="{{ Storage::url('post-images/'.$post->image) }}"
                                                  class="card-img-top"
@@ -43,10 +43,16 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <div>
-                                                <a href="{{ route('user.posts.show', $post->id) }}">
+                                                <a href="{{ route('posts.show', $post->id) }}">
                                                     <h5 class="card-title mb-2">{{ $post->title }}</h5>
                                                 </a>
-                                                <p class="card-text text-muted">{{ $post->created_at->format('F j, Y') }}</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="card-text text-muted pe-4">{{ $post->created_at->format('F j, Y') }}</p>
+                                                    <p class="card-text text-muted">
+                                                        <i class="bi bi-eye-fill"></i>
+                                                        {{ $post->views }}
+                                                    </p>
+                                                </div>
                                             </div>
                                             <div class="dropdown">
                                                 <button class="btn px-1 border-0" type="button"
@@ -80,7 +86,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <p class="card-text">{!! format_str($post->content, 150) !!}</p>
+                                        <p class="card-text">{!! format_str($post->content, 690) !!}</p>
                                     </div>
                                 </div>
                             </div>
