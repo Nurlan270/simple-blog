@@ -42,7 +42,7 @@ class PostController extends Controller
         }
 
         $posts = $query
-            ->paginate(5)
+            ->paginate(24)
             ->withQueryString();
 
 
