@@ -95,9 +95,10 @@ class UserPostController extends Controller
 
     public function destroy(string $id, Request $request)
     {
-        Post::query()
-            ->findOrFail($id)
-            ->delete();
+        $post = Post::query()->findOrFail($id);
+
+        Storage::disk('public')->delete('post-images/'.$post->image);
+        $post->delete();
 
         $request->session()->flash('post', 'Post deleted successfully !');
 

@@ -3,7 +3,7 @@
 @section('page.title', 'Login')
 
 @section('content')
-    <div class="container mt-4 w-25">
+    <div class="container mt-4 col-md-6 col-lg-4">
         <div class="card">
             <div class="card-header text-center">
                 <h3 class="mt-1">{{ __('Login') }}</h3>
@@ -32,8 +32,8 @@
                     </div>
 
                     <div class="form-group d-flex align-items-center justify-content-between">
-                        <button type="submit" class="btn btn-primary mt-3">{{ __('Login') }}</button>
-                        <a href="{{ route('register') }}">{{ __("Doesn't have account yet? Register") }}</a>
+                        <button type="submit" class="btn btn-primary mt-3 px-4">{{ __('Login') }}</button>
+                        <a href="{{ route('register') }}" class="small ms-3">{{ __("Doesn't have account yet? Register") }}</a>
                     </div>
                 </form>
             </div>

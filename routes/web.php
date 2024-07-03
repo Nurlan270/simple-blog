@@ -45,8 +45,8 @@ Route::controller(AccountController::class)
     });
 
 //      Posts
-Route::resource('posts', PostController::class)
-    ->only(['index', 'show'])
+Route::get('posts/{post}', [PostController::class, 'show'])
+    ->name('posts.show')
     ->middleware('increment.post.view');
 
 //      Post's comments

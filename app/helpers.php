@@ -25,20 +25,25 @@ if (! function_exists('format_str')) {
     {
         if (isset($length)) {
             return Str::of(
-                Str::limit(nl2br($str), $length)
+                Str::limit($str, $length)
             )->stripTags([  // Allowed characters
                 'br',
-                'p', 'b', 'em', 'pre', 'del', 'blockquote',
-                'ul', 'ol', 'li', 'a'
             ]);
 
         } else {
             return Str::of($str)
             ->stripTags([  // Allowed characters
                 'br',
-                'p', 'b', 'em', 'pre', 'del', 'blockquote',
-                'ul', 'ol', 'li', 'a'
             ]);
         }
+    }
+}
+
+if (! function_exists('auto_select')) {
+    function auto_select($query, $value)
+    {
+        return request($query) == $value
+            ? 'selected'
+            : '';
     }
 }

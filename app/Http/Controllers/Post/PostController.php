@@ -3,25 +3,57 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Post\StorePostRequest;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::query()
-            ->latest()
-            ->paginate(24);
+        $validated = $request->validate([
+            'page'    => ['nullable', 'string'],
+            'sort_by' => ['nullable', 'string'],
+            'search'  => ['nullable', 'string'],
+        ]);
 
-        if ($posts->isEmpty() && isset($_GET['page'])){
-            return Redirect::to(url()->previous());
+        $page = $validated['page'] ?? null;
+        $sort_by = $validated['sort_by'] ?? null;
+        $search = $validated['search'] ?? null;
+        $query = Post::query();
+
+        //      Sort
+        if ($sort_by == 'date_new') :
+            $query->latest();
+        elseif ($sort_by == 'date_old') :
+            $query->oldest();
+        elseif ($sort_by == 'views_popular') :
+            $query->orderByDesc('views');
+        elseif ($sort_by == 'views_unpopular') :
+            $query->orderBy('views');
+        else :
+            $query->latest();
+        endif;
+
+        //      Search
+        if ($search) {
+            $query->where('title', 'like', "%$search%")
+                ->orWhere('content', 'like', "%$search%");
+        }
+
+        $posts = $query
+            ->paginate(5)
+            ->withQueryString();
+
+
+        if ($search && $posts->isEmpty()) {
+            return back()->withInput([
+                'not-found' => 'Nothing was found in the search for: "' . $search . '"'
+            ]);
+        }
+
+        if ($posts->isEmpty() && $page) {
+            return redirect()->route('home');
         }
 
         return view('home', compact('posts'));
@@ -42,5 +74,4 @@ class PostController extends Controller
 
         return view('posts.show', compact(['post', 'date', 'time', 'author', 'comments']));
     }
-
 }
