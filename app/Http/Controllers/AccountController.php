@@ -21,7 +21,7 @@ class AccountController extends Controller
     {
         if ($request->isMethod('PATCH')) {
             $validated = $request->validate([
-                'name' => ['required', 'string', 'min:5', 'max:50']
+                'name' => ['required', 'string', 'min:3', 'max:20']
             ]);
 
             try {

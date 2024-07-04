@@ -17,20 +17,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     @stack('css')
-    @stack('error')
-    @stack('trix')
 </head>
 <body>
 
 <div class="d-flex flex-column justify-content-between min-vh-100">
 
-    @include('includes.header')
-
     <main class="flex-grow-1 py-0">
         @yield('content')
     </main>
-
-    @include('includes.footer')
 
 </div>
 
@@ -38,6 +32,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-@stack('error-script')
+@stack('script')
 </body>
 </html>
