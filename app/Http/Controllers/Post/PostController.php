@@ -53,7 +53,7 @@ class PostController extends Controller
             ]);
         }
 
-        if ($posts->isEmpty() && $page) {
+        if ($page && $posts->isEmpty()) {
             return redirect()->route('home');
         }
 

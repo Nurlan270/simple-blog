@@ -47,3 +47,12 @@ if (! function_exists('auto_select')) {
             : '';
     }
 }
+
+if (! function_exists('select_if')) {
+    function select_if($statement)
+    {
+        return $statement
+            ? 'selected'
+            : '';
+    }
+}
