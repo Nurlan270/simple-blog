@@ -20,13 +20,9 @@
 </head>
 <body>
 
-<div class="d-flex flex-column justify-content-between min-vh-100">
-
-    <main class="flex-grow-1 py-0">
+    <main>
         @yield('content')
     </main>
-
-</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

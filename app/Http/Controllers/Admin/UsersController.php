@@ -5,22 +5,33 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::query()
-            ->latest()
-            ->paginate(30, ['id', 'role', 'name', 'email', 'created_at']);
+        $query = $request->validate([
+            'search' => ['nullable', 'string']
+        ]);
 
-        return view('admin.users.index', compact('users'));
+        $search = $query['search'] ?? null;
+
+        if (! empty($search)) {
+            $users = User::query()
+                ->where('name', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%")
+                ->latest()
+                ->paginate(25, ['id', 'role', 'name', 'email', 'created_at'])
+                ->withQueryString();
+        } else {
+            $users = User::query()
+                ->latest()
+                ->paginate(25, ['id', 'role', 'name', 'email', 'created_at']);
+        }
+
+        return view('admin.users.index', compact(['users', 'search']));
     }
 
     public function create(Request $request)

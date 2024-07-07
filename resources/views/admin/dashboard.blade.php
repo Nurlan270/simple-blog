@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>Welcome to the Admin Panel</h1>
+    <h1>Dashboard Panel</h1>
     <hr>
 
     <div class="row">

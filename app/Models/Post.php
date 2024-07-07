@@ -21,4 +21,12 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function author()
+    {
+         return User::query()
+             ->where('id', $this->author_id)
+             ->value('name')
+             ?? 'Unknown author';
+    }
 }

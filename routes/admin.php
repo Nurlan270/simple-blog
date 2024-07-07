@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,14 @@ Route::delete('users/{user}', [UsersController::class, 'delete_one_user'])
 
 Route::delete('users', [UsersController::class, 'delete_selected_users'])
     ->name('users.delete_selected_users');
+
+
+//      Posts
+Route::get('posts', [PostsController::class, 'index'])
+    ->name('posts.index');
+
+Route::delete('posts/{post}', [PostsController::class, 'delete_one_post'])
+    ->name('posts.delete_one_post');
+
+Route::delete('posts', [PostsController::class, 'delete_selected_posts'])
+    ->name('posts.delete_selected_posts');

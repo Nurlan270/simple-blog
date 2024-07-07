@@ -1,49 +1,74 @@
-* {
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+html,
+body {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
-body {
-    background: #ffffff;
+* {
+    font-family: 'Press Start 2P', cursive;
+    box-sizing: border-box;
 }
 
-.whistle {
-    width: 20%;
-    fill: #f95959;
-    margin: 100px 40%;
-    text-align: left;
-    transform: translate(-50%, -50%);
-    transform: rotate(0);
-    transform-origin: 80% 30%;
-    animation: wiggle .2s infinite;
+#app {
+    padding: 1rem;
+    background: black;
+    display: flex;
+    height: 100vh; /* Use viewport height */
+    justify-content: center;
+    align-items: center;
+    color: #54FE55;
+    text-shadow: 0px 0px 10px;
+    font-size: 6rem;
+    flex-direction: column;
 }
 
-@keyframes wiggle {
+#app .txt {
+    font-size: 1.8rem;
+}
+
+#app .btn-home {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+    color: #54FE55;
+    background: none;
+    border: 2px solid #54FE55;
+    text-shadow: 0px 0px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#app .btn-home:hover {
+    background: #54FE55;
+    color: black;
+}
+
+@keyframes blink {
     0% {
-        transform: rotate(3deg);
+        opacity: 0;
     }
+
+    49% {
+        opacity: 0;
+    }
+
     50% {
-        transform: rotate(0deg);
+        opacity: 1;
     }
+
     100% {
-        transform: rotate(3deg);
+        opacity: 1;
     }
 }
 
-h1 {
-    margin-top: -100px;
-    margin-bottom: 20px;
-    color: #facf5a;
-    text-align: center;
-    font-family: 'Raleway';
-    font-size: 90px;
-    font-weight: 800;
-}
-
-h2 {
-    color: #455d7a;
-    text-align: center;
-    font-family: 'Raleway';
-    font-size: 30px;
-    text-transform: uppercase;
+.blink {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }

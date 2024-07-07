@@ -63,7 +63,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $author = User::query()->find($post->author_id)->name;
+        $author = $post->author();
 
         $comments = $post
             ->comments()
