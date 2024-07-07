@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#comments">
+            <a class="nav-link {{ mark_route('admin.comments*') }}" href="{{ route('admin.comments.index') }}">
                 <i class="bi bi-chat-left-text-fill me-2"></i>
                 {{ __('Comments') }}
             </a>

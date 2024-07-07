@@ -17,19 +17,16 @@ class UsersController extends Controller
         ]);
 
         $search = $query['search'] ?? null;
+        $query = User::query();
 
-        if (! empty($search)) {
-            $users = User::query()
-                ->where('name', 'like', "%$search%")
-                ->orWhere('email', 'like', "%$search%")
-                ->latest()
-                ->paginate(25, ['id', 'role', 'name', 'email', 'created_at'])
-                ->withQueryString();
-        } else {
-            $users = User::query()
+        if (isset($search)) {
+            $query->where('name', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%");
+        }
+
+        $users = $query
                 ->latest()
                 ->paginate(25, ['id', 'role', 'name', 'email', 'created_at']);
-        }
 
         return view('admin.users.index', compact(['users', 'search']));
     }

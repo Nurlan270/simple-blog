@@ -13,4 +13,21 @@ class Comment extends Model
         'post_id', 'user_id',
         'comment',
     ];
+
+    public function author()
+    {
+        return User::query()->where('id', $this->user_id)->value('name')
+            ?? 'Unknown author';
+    }
+
+    public function post_title()
+    {
+        return Post::query()->where('id', $this->post_id)->value('title')
+            ?? 'Unknown post';
+    }
+
+    public function post_id()
+    {
+        return Post::query()->where('id', $this->post_id)->value('id');
+    }
 }

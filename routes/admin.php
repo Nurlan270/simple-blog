@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,13 @@ Route::delete('posts/{post}', [PostsController::class, 'delete_one_post'])
 
 Route::delete('posts', [PostsController::class, 'delete_selected_posts'])
     ->name('posts.delete_selected_posts');
+
+//      Comments
+Route::get('comments', [CommentController::class, 'index'])
+    ->name('comments.index');
+
+Route::delete('comments/{comment}', [CommentController::class, 'delete_one_comment'])
+    ->name('comments.delete_one_comment');
+
+Route::delete('comments', [CommentController::class, 'delete_selected_comments'])
+    ->name('comments.delete_selected_comments');

@@ -1,9 +1,9 @@
 @php use App\Models\User; @endphp
 @foreach($comments as $comment)
-    <div class="card mb-3">
+    <div class="card mb-3" id="{{ $comment->id }}">
         <div class="card-body">
             <div class="d-flex justify-content-between">
-                <h5 class="card-title">{{ User::query()->find($comment->user_id)->name }}</h5>
+                <h5 class="card-title">{{ User::query()->find($comment->user_id)->name }} <a href="#{{ $comment->id }}">#</a></h5>
                 <h6 class="card-subtitle text-muted">{{ $comment->created_at->diffForHumans() }}</h6>
             </div>
             <p class="card-text">{!! format_str($comment->comment) !!}</p>
