@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {{-- Google tag (gtag.js) --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPHX36KEH7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-GPHX36KEH7');
+    </script>
+    {{-- Google tag end --}}
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -20,31 +35,8 @@
     @stack('error')
     @stack('trix')
 
-    {{-- Google Tag Manager --}}
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MH4JWF9L');
-    </script>
-    {{-- End Google Tag Manager --}}
 </head>
 <body>
-{{-- Google Tag Manager (noscript) --}}
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MH4JWF9L"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-{{-- End Google Tag Manager (noscript) --}}
 
 <div class="d-flex flex-column justify-content-between min-vh-100">
 
