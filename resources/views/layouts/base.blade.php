@@ -19,17 +19,32 @@
     @stack('css')
     @stack('error')
     @stack('trix')
+
+    {{-- Google Tag Manager --}}
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MH4JWF9L');
+    </script>
+    {{-- End Google Tag Manager --}}
 </head>
 <body>
-<script> {{-- Live internet counter --}}
-    new Image().src = "https://counter.yadro.ru/hit?r" +
-        escape(document.referrer) + ((typeof (screen) == "undefined") ? "" :
-            ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
-                screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
-        ";h" + escape(document.title.substring(0, 150)) +
-        ";" + Math.random();
-</script>
-
+{{-- Google Tag Manager (noscript) --}}
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MH4JWF9L"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+{{-- End Google Tag Manager (noscript) --}}
 
 <div class="d-flex flex-column justify-content-between min-vh-100">
 
