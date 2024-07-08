@@ -21,6 +21,15 @@
     @stack('trix')
 </head>
 <body>
+<script> {{-- Live internet counter --}}
+    new Image().src = "https://counter.yadro.ru/hit?r" +
+        escape(document.referrer) + ((typeof (screen) == "undefined") ? "" :
+            ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+                screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+        ";h" + escape(document.title.substring(0, 150)) +
+        ";" + Math.random();
+</script>
+
 
 <div class="d-flex flex-column justify-content-between min-vh-100">
 
