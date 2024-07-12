@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('page.title', 'Edit post')
+@section('page.title', __('Edit Post'))
 
 @pushonce('css')
     <style>
@@ -24,7 +24,7 @@
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-header text-center">Edit Post</div>
+                    <div class="card-header text-center">{{ __('Edit Post') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('user.posts.update', $post->id) }}"
                               enctype="multipart/form-data">
@@ -32,14 +32,14 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">{{ __('Title') }}</label>
                                 <input type="text" class="form-control" name="title" id="title"
                                        value="{{ $post->title }}" required>
                                 <x-single-error name="title"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="content">Content</label>
+                                <label for="content">{{ __('Content') }}</label>
                                 <input id="x" type="hidden" name="content"
                                        value="{{ $post->content }}">
                                 <trix-editor input="x" id="content"></trix-editor>
@@ -47,8 +47,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="formFile" class="form-label" title="Not required">Upload preview
-                                    image</label>
+                                <label for="formFile" class="form-label" title="Not required">{{ __('Upload preview image') }}</label>
                                 <input type="file" class="form-control" id="formFile" name="image"
                                        accept="image/*" onchange="previewImage(event)">
                                 <img id="imagePreview"
@@ -61,7 +60,7 @@
                             </div>
 
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Edit Post</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Edit Post') }}</button>
                             </div>
                         </form>
                     </div>

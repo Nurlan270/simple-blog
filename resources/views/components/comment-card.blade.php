@@ -16,7 +16,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger px-2">
                             <i class="bi bi-trash"></i>
-                            Delete
+                            {{ __('Delete') }}
                         </button>
                     </form>
                 </div>

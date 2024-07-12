@@ -71,8 +71,8 @@ class PostController extends Controller
             ->latest()
             ->get();
 
-        $date = $post->created_at->format('F j, Y');
-        $time = $post->created_at->format('H:i');
+        $date = $post->created_at->translatedFormat('F j, Y');
+        $time = $post->created_at->translatedFormat('H:i');
 
         return view('posts.show', compact(['post', 'date', 'time', 'author', 'comments']));
     }

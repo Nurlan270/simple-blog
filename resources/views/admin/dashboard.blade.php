@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page.title', 'Dashboard')
+@section('page.title', __('Dashboard'))
 
 @pushonce('css')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -69,7 +69,7 @@
 
 @section('content')
 
-    <h1>Dashboard Panel</h1>
+    <h1>{{ __('Dashboard Panel') }}</h1>
     <hr>
 
     <div class="row">

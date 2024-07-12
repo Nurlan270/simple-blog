@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('page.title', 'Register')
+@section('page.title', __('Register'))
 
 @section('content')
     <div class="container mt-4 col-md-6 col-lg-4">

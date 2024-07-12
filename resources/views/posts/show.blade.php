@@ -31,7 +31,7 @@
                         <a href="{{ route('home') }}"
                            class="btn btn-secondary position-absolute top-0 start-0 m-3 z-index-1">
                             <i class="bi bi-arrow-bar-left"></i>
-                            Posts
+                            {{ __('Posts') }}
                         </a>
                         @if($post->image)
                             <img src="{{ Storage::url('post-images/'.$post->image) }}" class="card-img-top"
@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h3 class="card-title mb-0 text-break">{{ $post->title }}</h3>
-                            <small class="text-muted">{{ $date .' at '. $time }}</small>
+                            <small class="text-muted">{{ $date }} {{ __('at') }} {{ $time }}</small>
                         </div>
                         <p class="card-text">{!! $post->content !!}</p>
                         <div class="d-flex justify-content-between">
@@ -53,7 +53,7 @@
                                 {{ $post->views }}
                             </small>
                             <small class="text-muted">
-                                By {{ $author }}
+                                {{ __('By') }} {{ $author }}
                             </small>
                         </div>
                     </div>
@@ -61,29 +61,29 @@
 
                 @auth
                     <hr style="height:1px;border:none;color:#333;background-color:#333;">
-                    <h4>Leave comment</h4>
+                    <h4>{{ __('Leave comment') }}</h4>
 
                     <x-comment-form :post="$post"/>
 
                     <hr style="height:1px;border:none;color:#333;background-color:#333;">
                 @else
                     <div class="card bg-dark-subtle py-4">
-                        <h5 class="text-center mb-4">To leave a comment you must be authorized.</h5>
+                        <h5 class="text-center mb-4">{{ __('To leave a comment you must be authorized.') }}</h5>
                         <div class="d-flex justify-content-center">
                             <a href="{{ route('login') }}">
-                                <button class="btn btn-primary me-3 px-4">Login</button>
+                                <button class="btn btn-primary me-3 px-4">{{ __('Login') }}</button>
                             </a>
                             <a href="{{ route('register') }}">
-                                <button class="btn btn-outline-primary px-4">Register</button>
+                                <button class="btn btn-outline-primary px-4">{{ __('Register') }}</button>
                             </a>
                         </div>
                     </div>
                 @endauth
                 @if($count = $comments->count())
-                    <h4 class="mt-3 mb-4">Comments - {{ $count }}</h4>
+                    <h4 class="mt-3 mb-4">{{ __('Comments') }} - {{ $count }}</h4>
                     <x-comment-card :comments="$comments" :post="$post"/>
                 @else
-                    <p class="text-center mt-5">No comments yet.</p>
+                    <p class="text-center mt-5">{{ __('No comments yet.') }}</p>
                 @endif
             </div>
         </div>

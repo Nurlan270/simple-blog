@@ -5,5 +5,5 @@
                value="{{ old('content') }}">
         <trix-editor input="x" id="comment"></trix-editor>
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Submit Comment</button>
+    <button type="submit" class="btn btn-primary mt-3">{{ __('Submit Comment') }}</button>
 </form>

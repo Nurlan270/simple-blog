@@ -3,10 +3,14 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Post\UserPostController;
 use Illuminate\Support\Facades\Route;
+
+//      Locale
+Route::post('locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
 //      Home
 Route::get('/', [PostController::class, 'index'])->name('home');
