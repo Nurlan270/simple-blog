@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('page.title', 'My Posts')
+@section('page.title', __('My Posts'))
 
 @section('content')
 
@@ -9,15 +9,15 @@
     <div class="container my-4">
         <div class="row">
             <div class="col-md-12 d-flex justify-content-between align-items-center mb-4">
-                <h1>My Posts</h1>
-                <span class="badge badge-primary px-2 py-2">Total Posts: {{ $posts->count() }}</span>
+                <h1>{{ __('My Posts') }}</h1>
+                <span class="badge badge-primary px-2 py-2">{{ __('Total Posts') }}: {{ $posts->count() }}</span>
             </div>
         </div>
 
         @if($posts->isEmpty())
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>You have no posts yet. <a href="{{ route('user.posts.create') }}">Add</a> your first post</p>
+                    <p>{{ __('You have no posts yet.') }} <a href="{{ route('user.posts.create') }}">{{ __('Add') }}</a> {{ __('your first post') }}</p>
                 </div>
             </div>
         @else
@@ -47,7 +47,7 @@
                                                     <h5 class="card-title mb-2">{{ $post->title }}</h5>
                                                 </a>
                                                 <div class="d-flex justify-content-between">
-                                                    <p class="card-text text-muted pe-4">{{ $post->created_at->format('F j, Y') }}</p>
+                                                    <p class="card-text text-muted pe-4">{{ $post->created_at->translatedFormat('F j, Y') }}</p>
                                                     <p class="card-text text-muted">
                                                         <i class="bi bi-eye-fill"></i>
                                                         {{ $post->views }}
@@ -66,7 +66,7 @@
                                                         <button class="dropdown-item"
                                                                 onclick="location.href='{{ route('user.posts.edit', $post->id) }}';">
                                                             <i class="bi bi-pencil-square pe-2"></i>
-                                                            Edit
+                                                            {{ __('Edit') }}
                                                         </button>
                                                     </li>
                                                     <li>
@@ -79,7 +79,7 @@
                                                                     class="dropdown-item text-danger border-0"
                                                                     onclick="location.href='{{ route('user.posts.destroy', $post->id) }}';">
                                                                 <i class="bi bi-trash pe-2"></i>
-                                                                Delete
+                                                                {{ __('Delete') }}
                                                             </button>
                                                         </form>
                                                     </li>

@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('page.title', 'Account panel')
+@section('page.title', __('Account panel'))
 
 @section('content')
     <div class="container mt-5">

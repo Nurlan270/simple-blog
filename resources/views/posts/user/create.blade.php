@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('page.title', 'Create post')
+@section('page.title', __('Create Post'))
 
 @pushonce('css')
     <style>
@@ -24,20 +24,20 @@
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-header text-center">Create Post</div>
+                    <div class="card-header text-center">{{ __('Create Post') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('user.posts.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">{{ __('Title') }}</label>
                                 <input type="text" class="form-control" name="title" id="title"
                                        value="{{ old('title') }}" required>
                                 <x-single-error name="title"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="content">Content</label>
+                                <label for="content">{{ __('Content') }}</label>
                                 <input id="x" type="hidden" name="content"
                                        value="{{ old('content') }}">
                                 <trix-editor input="x" id="content"></trix-editor>
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="formFile" class="form-label" title="Not required">Upload preview image</label>
+                                <label for="formFile" class="form-label" title="Not required">{{ __('Upload preview image') }}</label>
                                 <input type="file" class="form-control" id="formFile" name="image"
                                        accept="image/*" onchange="previewImage(event)">
                                 <img id="imagePreview" src="#" alt="Image Preview" class="mt-2 img-fluid"
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Create Post</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Create Post') }}</button>
                             </div>
                         </form>
                     </div>

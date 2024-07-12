@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\IncrementPostView;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -24,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => EnsureUserIsAdmin::class,
             'increment.post.view' => IncrementPostView::class,
         ]);
+        $middleware->web(SetLocale::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
