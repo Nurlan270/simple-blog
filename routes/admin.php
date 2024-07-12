@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'admin/dashboard');
 
-Route::view('dashboard', 'admin.dashboard')
+Route::get('dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 //      Users

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11bdfb56873ba63123086fc2206f1fe2",
+    "content-hash": "553e326f18ed145fd90de8938615d32a",
     "packages": [
         {
             "name": "brick/math",
@@ -137,16 +137,16 @@
         },
         {
             "name": "dflydev/dot-access-data",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
-                "reference": "f41715465d65213d644d3141a6a93081be5d3549"
+                "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/f41715465d65213d644d3141a6a93081be5d3549",
-                "reference": "f41715465d65213d644d3141a6a93081be5d3549",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/a23a2bf4f31d3518f3ecb38660c95715dfead60f",
+                "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "shasum": ""
             },
             "require": {
@@ -206,9 +206,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dflydev/dflydev-dot-access-data/issues",
-                "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.2"
+                "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.3"
             },
-            "time": "2022-10-27T11:44:00+00:00"
+            "time": "2024-07-08T12:26:09+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1049,6 +1049,73 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "hywax/ya-metrika",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hywax/ya-metrika.git",
+                "reference": "da32cc4b1a1905c4fc1ba3523d4fe7789e0ae1eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hywax/ya-metrika/zipball/da32cc4b1a1905c4fc1ba3523d4fe7789e0ae1eb",
+                "reference": "da32cc4b1a1905c4fc1ba3523d4fe7789e0ae1eb",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.8.1",
+                "monolog/monolog": "^3.7.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.11.6",
+                "squizlabs/php_codesniffer": "^3.10.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hywax\\YaMetrika\\": "src"
+                }
+            },
+            "scripts": {
+                "lint": [
+                    "composer run lint:phpstan && composer run lint:phpcs"
+                ],
+                "lint:phpstan": [
+                    "phpstan"
+                ],
+                "lint:phpcs": [
+                    "phpcs ."
+                ],
+                "lint:fix": [
+                    "phpcbf ."
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hywax",
+                    "email": "me@hywax.space",
+                    "homepage": "https://hywax.space"
+                }
+            ],
+            "description": "Yandex Metrika API Library",
+            "homepage": "https://github.com/axp-dev/ya-metrika",
+            "keywords": [
+                "api",
+                "metrika",
+                "yandex"
+            ],
+            "support": {
+                "source": "https://github.com/hywax/ya-metrika/tree/main",
+                "issues": "https://github.com/hywax/ya-metrika/issues"
+            },
+            "time": "2024-07-07T02:08:40+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7884,7 +7951,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "hywax/ya-metrika": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

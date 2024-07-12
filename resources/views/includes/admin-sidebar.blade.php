@@ -24,11 +24,5 @@
                 {{ __('Comments') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#settings">
-                <i class="bi bi-gear-fill me-2"></i>
-                {{ __('Settings') }}
-            </a>
-        </li>
     </ul>
 </div>

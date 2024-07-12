@@ -23,10 +23,12 @@ Route::controller(RegisterController::class)
 //      Login
 Route::controller(LoginController::class)
     ->name('login')
-    ->middleware(['throttle:login', 'guest'])
+    ->middleware('guest')
     ->group(function () {
         Route::get('login', 'create');
-        Route::post('login', 'authenticate')->name('.authenticate');
+        Route::post('login', 'authenticate')
+            ->middleware('throttle:login')
+            ->name('.authenticate');
     });
 
 //      Logout
